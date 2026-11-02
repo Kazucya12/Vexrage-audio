@@ -2,7 +2,7 @@
 module.exports = async (req, res) => {
   if (req.query.ping) return res.status(204).end();
   const path = String(req.query.path || '');
-  if (!/^\/assets\/v1\/(assets|operations\/[\w-]+)$/.test(path)) return res.status(400).json({ message: 'Path tidak diizinkan' });
+  if (!/^\/assets\/v1\/(assets|assets\/\d+\?readMask=moderationResult|operations\/[\w-]+)$/.test(path)) return res.status(400).json({ message: 'Path tidak diizinkan' });
   try {
     let body;
     if (req.method !== 'GET') {
